@@ -51,17 +51,6 @@ $config = [
         ],
     ],
     'params' => $params,
-    'on beforeAction' => function(){
-        echo '<pre>';
-        var_dump("Application before action");
-        echo '</pre>';
-
-        Yii::$app->controller->on(\yii\web\Controller::EVENT_BEFORE_ACTION, function(){
-            echo '<pre>';
-            var_dump("Controller before action from ->on method");
-            echo '</pre>';
-        });
-    }
 ];
 
 if (YII_ENV_DEV) {
