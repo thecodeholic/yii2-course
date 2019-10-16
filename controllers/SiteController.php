@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\TestModel;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -124,5 +125,31 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionTest()
+    {
+        $test = new TestModel();
+
+        $post = [
+            'name' => 'John',
+            'surname' => 'Doe',
+            'email' => 'john@example.com',
+            'myAge' => 30,
+        ];
+        $test->attributes = $post;
+
+        if ($test->validate()) {
+            echo "OK";
+        } else {
+            echo '<pre>';
+            var_dump($test->errors);
+            echo '</pre>';
+            echo "Error";
+        }
+
+//        echo '<pre>';
+//        var_dump($test->getAttributeLabel('surname'));
+//        echo '</pre>';
     }
 }
