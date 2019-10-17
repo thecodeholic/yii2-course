@@ -125,4 +125,33 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionResponse()
+    {
+        $content = '';
+        for ($i = 0; $i < 100000; $i++) {
+            $content .= $this->doSomethingAndGetContent();
+        }
+
+        return Yii::$app->response->sendContentAsFile($content, 'test.txt');
+    }
+
+    public function actionResponse2()
+    {
+        $filename = Yii::getAlias('@app/runtime/large_content.txt');
+        $resource = fopen($filename, 'w+');
+        for ($i = 0; $i < 100000; $i++) {
+            fputs($resource, $this->doSomethingAndGetContent());
+        }
+        fflush($resource);
+        fclose($resource);
+        $stream = fopen($filename, 'r');
+
+        return Yii::$app->response->sendStreamAsFile($stream, 'test.txt');
+    }
+
+    private function doSomethingAndGetContent()
+    {
+        return file_get_contents(__FILE__);
+    }
 }
