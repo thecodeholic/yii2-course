@@ -12,6 +12,9 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public $enableCsrfValidation = false;
+
+
     /**
      * {@inheritdoc}
      */
@@ -124,5 +127,15 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionRequest()
+    {
+        $req = Yii::$app->request;
+
+        echo '<pre>';
+        var_dump($_SERVER['REMOTE_ADDR']);
+        echo '</pre>';
+
     }
 }
