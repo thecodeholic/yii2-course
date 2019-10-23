@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\components\TimelineComponent;
+use Cassandra\Time;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,6 +63,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        Yii::$container->set(TimelineComponent::class, [
+            'numberOfEvent' => '25'
+        ]);
+        $timeline = Yii::createObject([
+            'class' => TimelineComponent::class,
+            'visibility' => 'public',
+            'on addNewEvent' => function(){
+
+            }
+        ]);
+        echo '<pre>';
+        var_dump($timeline);
+        echo '</pre>';
         return $this->render('index');
     }
 

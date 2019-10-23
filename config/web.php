@@ -11,6 +11,13 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
+    'container' => [
+        'definitions' => [
+            'app\components\TimelineComponent' => [
+                'numberOfEvent' => 15
+            ]
+        ]
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -18,6 +25,7 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+            'keyPrefix' => 'something'
         ],
         'user' => [
             'identityClass' => 'app\models\User',
