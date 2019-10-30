@@ -49,6 +49,17 @@ $config = [
             'rules' => [
             ],
         ],
+        'assetManager' => [
+            'linkAssets' => false,
+            'appendTimestamp' => true,
+            'bundles' => [
+                \yii\bootstrap\BootstrapAsset::class => [
+                    'css' => [
+                        '/vendor/bootstrap/css/bootstrap.min.css'
+                    ]
+                ]
+            ]
+        ]
     ],
     'params' => $params,
 ];

@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05251a4beeaa8dfa7849f73389718d5f",
+    "content-hash": "720d45be06a1dfa8b61a543e787e312d",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -28,11 +28,26 @@
             ]
         },
         {
+            "name": "bower-asset/font-awesome",
+            "version": "5.11.2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:FortAwesome/Font-Awesome.git",
+                "reference": "1c1b102b2ba19518d77e60e97cf1b4ebf133bba0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/1c1b102b2ba19518d77e60e97cf1b4ebf133bba0",
+                "reference": "1c1b102b2ba19518d77e60e97cf1b4ebf133bba0"
+            },
+            "type": "bower-asset"
+        },
+        {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -71,7 +86,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -3794,8 +3809,6 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": ">=5.4.0"
-    },
+    "platform": [],
     "platform-dev": []
 }

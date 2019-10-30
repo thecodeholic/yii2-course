@@ -17,15 +17,26 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
+//    public $sourcePath = '';
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'vendor/simple-line-icons/css/simple-line-icons.css',
+        'https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic',
+        'css/landing-page.min.css'
     ];
     public $js = [
+        'vendor/bootstrap/js/bootstrap.bundle.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        FontAwesomeAsset::class
     ];
+
+    public function init()
+    {
+        parent::init();
+        $this->js[] = 'i18n/' . \Yii::$app->language . '.js';
+    }
 }
