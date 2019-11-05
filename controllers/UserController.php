@@ -30,6 +30,7 @@ class UserController extends Controller
 ////            'tablePrefix' => ''
 //        ]);
         $db = \Yii::$app->db;
+        // Use {{%table_name}} to correctly quote the table and to user table prefix also
         $users = $db->createCommand("SELECT * FROM {{%user}}")->queryAll();
         echo '<pre>';
         var_dump($users);
