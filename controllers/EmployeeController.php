@@ -23,46 +23,43 @@ class EmployeeController extends Controller
 {
     public function actionIndex()
     {
-        $data = $this->queryData();
-
-        return $this->printTable($data);
+        $this->processData1();
+        return $this->renderContent("");
     }
 
-    private function queryData($id = '10001')
+    private function processData1()
     {
-        return Salary::find()
-            ->select(['*', 'AVG(salary) as avg_salary'])
-            ->groupBy('emp_no')
-//            ->having('AVG(salary) > 60000')
-                ->orderBy('AVG(salary)')
-            ->limit(10)
-            ->asArray()
-            ->all();
-        /*
-        return Employee::find()
-            ->select(["CONCAT(first_name, ' ', last_name) as full_name"])
-            ->limit(10)
-//            ->where([
-//                'emp_no' => ['10001', '10002']
-//            ])
-//            ->andWhere(['gender' => 'M'])
-//            ->offset(10)
-            ->asArray()
-            ->column();
-        */
-    }
+        $limit = 1000;
+        $offset = 0;
+        do {
+            $employees = Employee::find()
+                ->limit($limit)
+                ->offset($offset)
+                ->asArray()
+                ->all();
 
-    private function printTable($data)
-    {
-        $content = '<table class="table">';
-        foreach ($data as $datum) {
-            $content .= "<tr>";
-            foreach ($datum as $key => $value) {
-                $content .= "<td>$value</td>";
+            foreach ($employees as $employee) {
+                // Do your job right here
             }
-            $content .= "</tr>";
+
+            $offset += $limit;
+        } while ($employees);
+    }
+
+    private function processData2()
+    {
+        $limit = 1000;
+        foreach (Employee::find()->asArray()->batch($limit) as $employees) {
+            foreach ($employees as $employee) {
+                // Do your job right here
+            }
         }
-        $content .= '</table>';
-        return $this->renderContent($content);
+    }
+
+    private function processData3()
+    {
+        foreach (Employee::find()->each(1000) as $employee){
+            // Do your job right here
+        }
     }
 }
